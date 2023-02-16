@@ -8,9 +8,10 @@
     "default_icon": "logo192.png"
   },
   "icons": {},
+  "permissions": ["tabs"],
   "content_scripts": [
     {
-      "matches": ["https://blank.org/*"],
+      "matches": ["https://*/*"],
       "js": ["content-script/src/main.tsx"],
       "media": []
     }

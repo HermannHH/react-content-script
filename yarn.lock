@@ -932,6 +932,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+html-screen-capture-js@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/html-screen-capture-js/-/html-screen-capture-js-2.0.5.tgz#14947318cdf55453a0bca9d1aaa012c60931e048"
+  integrity sha512-SnmjJSkVffHWLorMk9mpzSfGhCZpD9l8/zMvKloqDOdn55IzVD+9vKD5NyNi7g65WCI6+Rb/f14+IdhOvUuVTg==
+
 htmlparser2@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-8.0.1.tgz#abaa985474fcefe269bc761a779b544d7196d010"

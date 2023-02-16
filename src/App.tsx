@@ -1,8 +1,7 @@
-/// <reference types="chrome" />
-/// <reference types="vite-plugin-svgr/client" />
-
 import logo from './logo.svg'
 import './App.css'
+import { useEffect, useState } from 'react'
+import {capture, OutputType} from 'html-screen-capture-js';
 
 function getLogo() {
   if (window.chrome) {
@@ -13,13 +12,32 @@ function getLogo() {
 }
 
 function App() {
+  const [currentUrl, setCurrentUrl] = useState<string>('');
+  const [docString, setDocString] = useState<string>('');
+
+  const htmlDocStr = capture(
+    OutputType.STRING,
+    window.document,
+  );
+
+
+  const captureUrl = async () => {
+    alert({ htmlDocStr })
+  }
+
+  useEffect(() => {
+    chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
+      const url = tabs[0].url
+      if (url) {
+        setCurrentUrl(url)
+      }
+    });
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={`${getLogo()}`} className="App-logo" alt="logo" />
-        <p>Hello, World!</p>
-        <p>I'm a Chrome Extension Popup!</p>
-      </header>
+    <div style={{ width: '340px', height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+        <button onClick={() => captureUrl()}>Capture</button>
+        <p>{currentUrl}</p>
     </div>
   )
 }
